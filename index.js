@@ -5,7 +5,7 @@ var DomHandler = require("domhandler").Handler,
 function Handler(options){
 	if(!(this instanceof Handler)) return new Handler(options);
 	var that = this;
-	this._handler = DomHandler.call(this, function(dom){
+	DomHandler.call(this, function(dom){
 		that.emit("dom", dom);
 	}, options, function(elem){
 		that.emit("element", elem);
