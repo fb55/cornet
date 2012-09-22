@@ -1,7 +1,6 @@
 ##About
 
-> The __cornet__ is a brass instrument very similar to the trumpet, distinguished by its conical bore, compact shape, and mellower tone quality.
-- [Wikipedia](http://en.wikipedia.org/wiki/Cornet)
+> The __cornet__ is a brass instrument very similar to the trumpet, distinguished by its conical bore, compact shape, and mellower tone quality. - [Wikipedia](http://en.wikipedia.org/wiki/Cornet)
 
 This project is demonstrating how to use a couple of my libraries to replace [`substack/node-trumpet`](https://github.com/substack/node-trumpet) in just a couple of LOC.
 
@@ -14,22 +13,21 @@ Even better, there are some advantages over `trumpet`:
 ##Example
 
 ```js
+var Parser = require("htmlparser2").WritableStream,
+    Cornet = require("cornet"),
+    minreq = require("minreq"),
+    $ = require("cheerio");
 
-	var Parser = require("htmlparser2").WritableStream,
-	    Cornet = require("cornet"),
-	    minreq = require("minreq"),
-	    $ = require("cheerio");
-	
-	var cornet = new Cornet();
-	
-	minreq.get("http://github.com/fb55").pipe(new Parser(cornet));
-	
-	cornet.remove("script"); //remove all scripts
-	
-	//show all repos
-	cornet.select(".repo_list", function(elem){
-		$(elem).find("h3").each(function(i){
-			console.log("repo %d: %s", i, $(this).text());
-		});
+var cornet = new Cornet();
+
+minreq.get("http://github.com/fb55").pipe(new Parser(cornet));
+
+cornet.remove("script"); //remove all scripts
+
+//show all repos
+cornet.select(".repo_list", function(elem){
+	$(elem).find("h3").each(function(i){
+		console.log("repo %d: %s", i, $(this).text());
 	});
+});
 ```
