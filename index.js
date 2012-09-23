@@ -21,14 +21,15 @@ Handler.prototype.select = function(selector, cb){
 	if(typeof selector === "string"){
 		selector = CSSselect.parse(selector);
 	}
-
-	this.on("element", function(elem){
+	function onElem(elem){
 		if(selector(elem)) cb(elem);
-	});
+	}
+	this.on("element", onElem);
+	return onElem;
 };
 
 Handler.prototype.remove = function(selector){
-	this.select(selector, DomUtils.removeElement);
+	return this.select(selector, DomUtils.removeElement);
 };
 
 module.exports = Handler;
