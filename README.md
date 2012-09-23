@@ -10,13 +10,11 @@ Even better, there are some advantages over `trumpet`:
 * `cornet` works as a handler for [`fb55/htmlparser2`](https://github.com/fb55/node-htmlparser), which is probably the fastest HTML parser currently available for node. And it's much less strict than the `sax` module used by `trumpet`.
 * By using the great [`MatthewMueller/cheerio`](https://github.com/MatthewMueller/cheerio) module, you can do everything with your document that would be possible with jQuery.
 
-<<<<<<< HEAD
 _Please note that callbacks are fired as soon as an element was retrieved. That means that no content past the element will be available, so cheerio won't find anything, and, as the element is at this time the last child of it's parent, selectors like `:nth-last-child` won't work as expected._
-=======
+
 ##Install
 
 	npm install cornet
->>>>>>> improved example, added documentation
 
 ##Example
 
