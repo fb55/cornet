@@ -53,9 +53,10 @@ var onTitle = cornet.select("title", function(title){
 ##API
 
 ####`cornet(options)`
-The constructor. `options` are the same you can pass to [fb55/DomHandler](https://github.com/fb55/DomHandler).
+The constructor. `options` are the same you can pass to [`fb55/DomHandler`](https://github.com/fb55/DomHandler).
 
 It's an `EventEmitter` that emits two events:
+
 * `element` is emitted whenever an element was added to the DOM.
 * `dom` is emitted when the DOM is complete.
 
