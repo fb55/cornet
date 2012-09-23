@@ -10,7 +10,13 @@ Even better, there are some advantages over `trumpet`:
 * `cornet` works as a handler for [`fb55/htmlparser2`](https://github.com/fb55/node-htmlparser), which is probably the fastest HTML parser currently available for node. And it's much less strict than the `sax` module used by `trumpet`.
 * By using the great [`MatthewMueller/cheerio`](https://github.com/MatthewMueller/cheerio) module, you can do everything with your document that would be possible with jQuery.
 
+<<<<<<< HEAD
 _Please note that callbacks are fired as soon as an element was retrieved. That means that no content past the element will be available, so cheerio won't find anything, and, as the element is at this time the last child of it's parent, selectors like `:nth-last-child` won't work as expected._
+=======
+##Install
+
+	npm install cornet
+>>>>>>> improved example, added documentation
 
 ##Example
 
@@ -29,7 +35,38 @@ cornet.remove("script"); //remove all scripts
 //show all repos
 cornet.select(".repo_list", function(elem){
 	$(elem).find("h3").each(function(i){
-		console.log("repo %d: %s", i, $(this).text());
+		console.log("repo %d: %s", i + 1, $(this).text().trim());
 	});
 });
+
+//does the same
+var i = 0;
+cornet.select(".repo_list h3", function(elem){
+	console.log("repo %d: %s", ++i, $(elem).text().trim());
+});
+
+//sometimes, you only want to get a single element
+var onTitle = cornet.select("title", function(title){
+	console.log("Page title:", $(title).text().trim());
+	cornet.removeLister("element", onTitle);
+});
 ```
+
+##API
+
+####`cornet(options)`
+The constructor. `options` are the same you can pass to [fb55/DomHandler](https://github.com/fb55/DomHandler).
+
+It's an `EventEmitter` that emits two events:
+* `element` is emitted whenever an element was added to the DOM.
+* `dom` is emitted when the DOM is complete.
+
+####`cornet#select(selector | fn, cb)`
+Calls the callback when the selector is matched or a passed function returns `true` (or any value that evaluates to true).
+
+Internally, listenes for any `element` event and checks then if the selector is matched.
+
+Returns the listening function, so you can remove it afterwards (as shown in the example above).
+
+####`cornet#remove(selector | fn)`
+Removes all elements that match the selector. Also returns the listener.

@@ -15,3 +15,16 @@ cornet.select(".repo_list", function(elem){
 		console.log("repo %d: %s", i + 1, $(this).text().trim());
 	});
 });
+
+//does the same
+var i = 0;
+cornet.select(".repo_list h3", function(elem){
+	console.log("repo %d: %s", ++i, $(elem).text().trim());
+});
+
+//sometimes, you only want to get a single element
+var onTitle = cornet.select("title", function(title){
+	console.log("Page title:", $(title).text().trim());
+	cornet.removeLister("element", onTitle);
+});
+
