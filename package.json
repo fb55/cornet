@@ -1,7 +1,7 @@
 {
   "name": "cornet",
   "author": "Felix Boehm <me@feedic.com>",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "transform streaming html using css selectors",
   "main": "index.js",
   "repository": {
