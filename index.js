@@ -1,5 +1,5 @@
-var DomHandler = require("domhandler").Handler,
-    DomUtils = require("domhandler").Utils,
+var DomHandler = require("domhandler"),
+    DomUtils = require("domutils"),
     CSSselect = require("CSSselect");
 
 function Handler(options){
