@@ -1,7 +1,7 @@
 {
   "name": "cornet",
   "author": "Felix Boehm <me@feedic.com>",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "transform streaming html using css selectors",
   "main": "index.js",
   "repository": {
@@ -17,8 +17,8 @@
     "handler"
   ],
   "dependencies": {
-    "CSSselect": "0.2",
-    "domhandler": "2.0",
-    "domutils": "1.0"
+    "CSSselect": "0.3",
+    "domhandler": "2.1",
+    "domutils": "1.1"
   }
 }
