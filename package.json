@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "CSSselect": "~0.7.0",
-    "domhandler": "~2.3.0",
+    "domhandler": "~2.4.0",
     "domutils": "~1.5.1"
   }
 }
