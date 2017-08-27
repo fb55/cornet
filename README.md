@@ -1,4 +1,4 @@
-##About
+## About
 
 > The __cornet__ is a brass instrument very similar to the trumpet, distinguished by its conical bore, compact shape, and mellower tone quality. - [Wikipedia](http://en.wikipedia.org/wiki/Cornet)
 
@@ -12,11 +12,11 @@ Even better, there are some advantages over `trumpet`:
 
 _Please note that callbacks are fired as soon as an element was retrieved. That means that no content past the element will be available, so cheerio won't find anything, and, as the element is at this time the last child of it's parent, selectors like `:nth-last-child` won't work as expected._
 
-##Install
+## Install
 
 	npm install cornet
 
-##Example
+## Example
 
 ```js
 var Parser = require("htmlparser2").WritableStream,
@@ -50,9 +50,9 @@ var onTitle = cornet.select("title", function(title){
 });
 ```
 
-##API
+## API
 
-####`cornet(options)`
+#### `cornet(options)`
 The constructor. `options` are the same you can pass to [`fb55/DomHandler`](https://github.com/fb55/DomHandler).
 
 It's an `EventEmitter` that emits two events:
@@ -60,12 +60,12 @@ It's an `EventEmitter` that emits two events:
 * `element` is emitted whenever an element was added to the DOM.
 * `dom` is emitted when the DOM is complete.
 
-####`cornet#select(selector | fn, cb)`
+#### `cornet#select(selector | fn, cb)`
 Calls the callback when the selector is matched or a passed function returns `true` (or any value that evaluates to true).
 
 Internally, listenes for any `element` event and checks then if the selector is matched.
 
 Returns the listening function, so you can remove it afterwards (as shown in the example above).
 
-####`cornet#remove(selector | fn)`
+#### `cornet#remove(selector | fn)`
 Removes all elements that match the selector. Also returns the listener.
