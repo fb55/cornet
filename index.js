@@ -1,35 +1,35 @@
-var DomHandler = require("domhandler"),
-    DomUtils = require("domutils"),
-    CSSselect = require("CSSselect");
+const DomHandler = require("domhandler");
+const DomUtils = require("domutils");
+const { compile } = require("css-select");
+const { EventEmitter } = require("events");
 
-function Handler(options){
-	if(!(this instanceof Handler)) return new Handler(options);
-	var that = this;
-	DomHandler.call(this, function(e, dom){
-		that.emit("dom", dom);
-	}, options, function(elem){
-		that.emit("element", elem);
-	});
+class Handler extends EventEmitter {
+    constructor(options) {
+        super();
+        DomHandler.call(
+            this,
+            (e, dom) => this.emit("dom", dom),
+            options,
+            (elem) => this.emit("element", elem)
+        );
+    }
+    select(selector, cb) {
+        if (typeof selector === "string") {
+            selector = compile(selector);
+        }
+        function onElem(elem) {
+            if (selector(elem)) cb(elem);
+        }
+        this.on("element", onElem);
+        return onElem;
+    }
+    remove(selector) {
+        return this.select(selector, DomUtils.removeElement);
+    }
 }
 
-require("util").inherits(Handler, require("events").EventEmitter);
-Object.getOwnPropertyNames(DomHandler.prototype).forEach(function(name){
-	Handler.prototype[name] = DomHandler.prototype[name];
+Object.getOwnPropertyNames(DomHandler.prototype).forEach((name) => {
+    Handler.prototype[name] = DomHandler.prototype[name];
 });
-
-Handler.prototype.select = function(selector, cb){
-	if(typeof selector === "string"){
-		selector = CSSselect.parse(selector);
-	}
-	function onElem(elem){
-		if(selector(elem)) cb(elem);
-	}
-	this.on("element", onElem);
-	return onElem;
-};
-
-Handler.prototype.remove = function(selector){
-	return this.select(selector, DomUtils.removeElement);
-};
 
 module.exports = Handler;

@@ -1,24 +1,32 @@
 {
-  "name": "cornet",
-  "author": "Felix Boehm <me@feedic.com>",
-  "version": "0.1.5",
-  "description": "transform streaming html using css selectors",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fb55/node-cornet"
-  },
-  "keywords": [
-    "trumpet",
-    "html",
-    "css",
-    "selector",
-    "htmlparser2",
-    "handler"
-  ],
-  "dependencies": {
-    "CSSselect": "~0.7.0",
-    "domhandler": "~2.4.0",
-    "domutils": "~1.7.0"
-  }
+    "name": "cornet",
+    "author": "Felix Boehm <me@feedic.com>",
+    "version": "0.1.5",
+    "description": "transform streaming html using css selectors",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fb55/node-cornet"
+    },
+    "keywords": [
+        "trumpet",
+        "html",
+        "css",
+        "selector",
+        "htmlparser2",
+        "handler"
+    ],
+    "dependencies": {
+        "css-select": "^2.1.0",
+        "domhandler": "~2.4.0",
+        "domutils": "~1.7.0"
+    },
+    "devDependencies": {
+        "eslint": "^7.6.0",
+        "eslint-config-prettier": "^6.11.0",
+        "prettier": "^2.0.5"
+    },
+    "prettier": {
+        "tabWidth": 4
+    }
 }
