@@ -6,7 +6,7 @@ This project is demonstrating how to use a couple of my libraries to replace [`s
 
 Even better, there are some advantages over `trumpet`:
 
--   The ammount of usable CSS selectors is increased dramatically thanks to [`fb55/CSSselect`](https://github.com/fb55/CSSselect).
+-   The ammount of usable CSS selectors is increased dramatically thanks to [`fb55/css-select`](https://github.com/fb55/css-select).
 -   `cornet` works as a handler for [`fb55/htmlparser2`](https://github.com/fb55/htmlparser2), the probably fastest HTML parser currently available for node. And it's much less strict than the `sax` module used by `trumpet`.
 -   By using the great [`MatthewMueller/cheerio`](https://github.com/MatthewMueller/cheerio) module, you can do everything with your document that would be possible with jQuery.
 
@@ -19,12 +19,12 @@ _Please note that callbacks are fired as soon as an element was retrieved. That 
 ## Example
 
 ```js
-var Parser = require("htmlparser2").WritableStream,
-    Cornet = require("cornet"),
-    minreq = require("minreq"),
-    $ = require("cheerio");
+const Parser = require("htmlparser2").WritableStream;
+const Cornet = require("cornet");
+const minreq = require("minreq");
+const $ = require("cheerio");
 
-var cornet = new Cornet();
+const cornet = new Cornet();
 
 minreq.get("http://github.com/fb55").pipe(new Parser(cornet));
 
@@ -40,13 +40,13 @@ cornet.select(".repo_list", function (elem) {
 });
 
 //does the same
-var i = 0;
+const i = 0;
 cornet.select(".repo_list h3", function (elem) {
     console.log("repo %d: %s", ++i, $(elem).text().trim());
 });
 
 //sometimes, you only want to get a single element
-var onTitle = cornet.select("title", function (title) {
+const onTitle = cornet.select("title", function (title) {
     console.log("Page title:", $(title).text().trim());
     cornet.removeLister("element", onTitle);
 });
