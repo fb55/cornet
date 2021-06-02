@@ -1,16 +1,29 @@
 ## About
 
-> The **cornet** is a brass instrument very similar to the trumpet, distinguished by its conical bore, compact shape, and mellower tone quality. - [Wikipedia](http://en.wikipedia.org/wiki/Cornet)
+> The **cornet** is a brass instrument very similar to the trumpet,
+> distinguished by its conical bore, compact shape, and mellower tone quality. -
+> [Wikipedia](http://en.wikipedia.org/wiki/Cornet)
 
-This project is demonstrating how to use a couple of my libraries to replace [`substack/node-trumpet`](https://github.com/substack/node-trumpet) in just a couple of LOC.
+This project is demonstrating how to use a couple of my libraries to replace
+[`substack/node-trumpet`](https://github.com/substack/node-trumpet) in just a
+couple of LOC.
 
 Even better, there are some advantages over `trumpet`:
 
--   The ammount of usable CSS selectors is increased dramatically thanks to [`fb55/css-select`](https://github.com/fb55/css-select).
--   `cornet` works as a handler for [`fb55/htmlparser2`](https://github.com/fb55/htmlparser2), the probably fastest HTML parser currently available for node. And it's much less strict than the `sax` module used by `trumpet`.
--   By using the great [`MatthewMueller/cheerio`](https://github.com/MatthewMueller/cheerio) module, you can do everything with your document that would be possible with jQuery.
+-   The ammount of usable CSS selectors is increased dramatically thanks to
+    [`fb55/css-select`](https://github.com/fb55/css-select).
+-   `cornet` works as a handler for
+    [`fb55/htmlparser2`](https://github.com/fb55/htmlparser2), the probably
+    fastest HTML parser currently available for node. And it's much less strict
+    than the `sax` module used by `trumpet`.
+-   By using the great
+    [`cheeriojs/cheerio`](https://github.com/cheeriojs/cheerio) module, you can
+    do everything with your document that would be possible with jQuery.
 
-_Please note that callbacks are fired as soon as an element was retrieved. That means that no content past the element will be available, so cheerio won't find anything, and, as the element is at this time the last child of it's parent, selectors like `:nth-last-child` won't work as expected._
+_Please note that callbacks are fired as soon as an element was retrieved. That
+means that no content past the element will be available, so cheerio won't find
+anything, and, as the element is at this time the last child of it's parent,
+selectors like `:nth-last-child` won't work as expected._
 
 ## Install
 
@@ -56,7 +69,8 @@ const onTitle = cornet.select("title", function (title) {
 
 #### `cornet(options)`
 
-The constructor. `options` are the same you can pass to [`fb55/DomHandler`](https://github.com/fb55/DomHandler).
+The constructor. `options` are the same you can pass to
+[`fb55/DomHandler`](https://github.com/fb55/DomHandler).
 
 It's an `EventEmitter` that emits two events:
 
@@ -65,11 +79,14 @@ It's an `EventEmitter` that emits two events:
 
 #### `cornet#select(selector | fn, cb)`
 
-Calls the callback when the selector is matched or a passed function returns `true` (or any value that evaluates to true).
+Calls the callback when the selector is matched or a passed function returns
+`true` (or any value that evaluates to true).
 
-Internally, listenes for any `element` event and checks then if the selector is matched.
+Internally, listenes for any `element` event and checks then if the selector is
+matched.
 
-Returns the listening function, so you can remove it afterwards (as shown in the example above).
+Returns the listening function, so you can remove it afterwards (as shown in the
+example above).
 
 #### `cornet#remove(selector | fn)`
 
