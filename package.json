@@ -19,13 +19,16 @@
     "dependencies": {
         "css-select": "^5.1.0",
         "domhandler": "^5.0.3",
-        "htmlparser2": "^8.0.1"
+        "domutils": "^3.0.1"
     },
     "devDependencies": {
         "@types/node": "^18.11.9",
+        "cheerio": "^1.0.0-rc.12",
         "eslint": "^8.28.0",
         "eslint-config-prettier": "^8.5.0",
-        "prettier": "^2.8.0"
+        "htmlparser2": "^8.0.1",
+        "prettier": "^2.8.0",
+        "typescript": "^4.9.3"
     },
     "scripts": {
         "lint": "npm run lint:es && npm run lint:prettier",
