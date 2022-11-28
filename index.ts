@@ -1,13 +1,17 @@
-import { Parser, DomUtils, ParserOptions } from "htmlparser2";
-import { DomHandler, Element, Document, DomHandlerOptions } from "domhandler";
+import * as  DomUtils from "domutils";
+import {
+    DomHandler,
+    Element,
+    Document,
+    DomHandlerOptions,
+} from "domhandler";
 import { compile } from "css-select";
 import { EventEmitter } from "events";
 
-export interface Options extends DomHandlerOptions, ParserOptions {}
+export type Options = DomHandlerOptions;
 
 export class Cornet extends EventEmitter implements PromiseLike<Document> {
     handler: DomHandler;
-    public parser: Parser;
 
     constructor(options?: Options) {
         super();
@@ -16,7 +20,6 @@ export class Cornet extends EventEmitter implements PromiseLike<Document> {
             options,
             (elem) => this.emit("element", elem)
         );
-        this.parser = new Parser(this.handler, options);
     }
 
     select(
