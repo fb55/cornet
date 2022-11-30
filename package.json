@@ -17,7 +17,7 @@
         "handler"
     ],
     "dependencies": {
-        "css-select": "^2.1.0",
+        "css-select": "^5.1.0",
         "domhandler": "~2.4.0",
         "domutils": "~1.7.0"
     },
