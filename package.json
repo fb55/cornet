@@ -22,7 +22,7 @@
         "domutils": "~1.7.0"
     },
     "devDependencies": {
-        "eslint": "^7.6.0",
+        "eslint": "^10.5.0",
         "eslint-config-prettier": "^6.11.0",
         "prettier": "^2.0.5"
     },
